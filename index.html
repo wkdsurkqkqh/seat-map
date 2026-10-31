@@ -1,1 +1,25 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>공연 좌석 배치표</title><link rel="stylesheet" href="style.css"></head><body data-mode="viewer"><main class="wrap"><header><div><h1>공연 좌석 배치표</h1><p>회색은 사용 중인 좌석이며, 빈 공간에는 좌석이 없습니다.</p></div><span id="status">연결 중…</span></header><section class="panel"><div class="stage">무대</div><div class="grid" id="grid"></div><p id="stats"></p><p><a href="admin.html">관리자 화면 선택</a></p></section></main><script type="module" src="./app.js"></script></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>공연 좌석 배치표</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="viewer">
+  <main class="wrap">
+    <header>
+      <div><h1>공연 좌석 배치표</h1><p>회색은 사용 중인 좌석입니다. 빈 공간에는 좌석이 없습니다.</p></div>
+      <span id="status" role="status">연결 준비 중…</span>
+    </header>
+    <section class="panel">
+      <div class="stage">무대</div>
+      <div class="grid" id="grid" aria-label="공연 좌석 배치표"></div>
+      <p id="stats"></p>
+      <p><a href="admin.html">관리자 화면 선택</a></p>
+    </section>
+  </main>
+  <script src="config.js"></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

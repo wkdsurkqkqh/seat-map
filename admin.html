@@ -1,1 +1,46 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>좌석 관리</title><link rel="stylesheet" href="style.css"></head><body data-mode="admin"><main class="wrap"><header><div><h1>좌석 관리</h1><p>5행 × 10칸 · 중앙 통로 고정 · 변경 사항 실시간 공유</p></div><span id="status">연결 중…</span></header><section class="panel"><div class="editor"><h2>편집 모드</h2><button type="button" data-mode="name" class="on">관객 이름 수정</button><button type="button" data-mode="layout">사용 가능 / 불가능 지정</button><button type="button" id="undo">직전 배치 되돌리기</button></div><p id="message" class="hint">좌석을 클릭하면 관객 이름을 수정할 수 있어요.</p><div class="stage">무대</div><div class="grid" id="grid"></div><p id="stats"></p><div class="actions"><button type="button" id="export">명단 CSV 저장</button><a href="index.html">관객 화면</a></div><p class="hint">배치 편집 모드에서 파란 좌석을 누르면 빈칸으로 바뀌고, 빈칸을 누르면 좌석이 생깁니다. 좌석 번호는 사용 가능한 칸에만 앞에서부터 다시 매겨집니다. 통로는 항상 비어 있습니다.</p></section></main><dialog class="dialog" id="dialog"><h2 id="seatTitle"></h2><label>관객 이름<input id="guest" maxlength="40" autocomplete="off" placeholder="이름 입력"></label><div class="actions"><button class="primary" id="save" type="button">저장</button><button id="remove" type="button">이름 지우기</button><button id="cancel" type="button">닫기</button></div><p id="saveMessage"></p></dialog><script type="module" src="./app.js"></script></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>좌석 관리</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="admin">
+  <main class="wrap">
+    <header>
+      <div><h1>좌석 관리</h1><p>5행 × 10칸 · 5열과 6열 사이 중앙 통로</p></div>
+      <span id="status" role="status">연결 준비 중…</span>
+    </header>
+    <section class="panel">
+      <div class="editor" id="editor">
+        <h2>편집 모드</h2>
+        <button type="button" class="on" data-edit-mode="name" aria-pressed="true">관객 이름 수정</button>
+        <button type="button" data-edit-mode="layout" aria-pressed="false">사용 가능 / 불가능 지정</button>
+        <button type="button" id="undo">배치 변경 되돌리기</button>
+      </div>
+      <p id="message" class="hint" role="status">좌석을 누르면 관객 이름을 수정할 수 있습니다.</p>
+      <div class="stage">무대</div>
+      <div class="grid" id="grid" aria-label="좌석 배치표"></div>
+      <p id="stats"></p>
+      <div class="actions"><button type="button" id="export">이름 명단 CSV 저장</button><a href="index.html">관객 화면 열기</a></div>
+      <p class="hint">배치 편집 모드에서 좌석을 누르면 빈 공간으로, 빈 공간의 +를 누르면 좌석으로 바뀝니다. 번호는 현재 사용 가능한 좌석에만 앞줄부터 순서대로 붙습니다.</p>
+    </section>
+  </main>
+  <dialog id="nameDialog" class="dialog" aria-labelledby="seatTitle">
+    <form id="nameForm">
+      <h2 id="seatTitle"></h2>
+      <label for="guest">관객 이름</label>
+      <input id="guest" name="guest" maxlength="40" autocomplete="off" placeholder="이름 입력" />
+      <div class="actions">
+        <button type="submit" class="primary" id="save">저장</button>
+        <button type="button" id="remove">이름 지우기</button>
+        <button type="button" id="cancel">닫기</button>
+      </div>
+      <p id="saveMessage" class="hint" role="status"></p>
+    </form>
+  </dialog>
+  <script src="config.js"></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
